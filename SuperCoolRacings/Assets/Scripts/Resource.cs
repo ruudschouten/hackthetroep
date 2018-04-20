@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class Resource : MonoBehaviour {
 
-    
-
     public int Amount;
     public int StartingAmount = 500;
 
