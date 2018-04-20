@@ -24,7 +24,7 @@ public class ResourceGenerator : MonoBehaviour {
 
         foreach (ResourceGeneration generation in generator.ResourcesPerTick)
         {
-            ResourcesPerTick.Add(new ResourceGeneration(generation.Resource, generation.Amount));
+            ResourcesPerTick.Add(new ResourceGeneration(generation.Resource, generation.Amount, generation.RemoveResource));
         }
 
     }
@@ -59,9 +59,10 @@ public class ResourceGeneration
     public int Amount;
     public bool RemoveResource = false;
 
-    public ResourceGeneration(Resource resource, int amount)
+    public ResourceGeneration(Resource resource, int amount, bool remove)
     {
         Resource = resource;
         Amount = amount;
+        RemoveResource = remove;
     }
 }
