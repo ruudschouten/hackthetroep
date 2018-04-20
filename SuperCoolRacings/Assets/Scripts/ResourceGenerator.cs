@@ -39,7 +39,14 @@ public class ResourceGenerator : MonoBehaviour {
 
     private void GenerateResource(ResourceGeneration generation)
     {
-        generation.Resource.AddAmount(generation.Amount);
+        if (generation.RemoveResource)
+        {
+            generation.Resource.ReduceAmount(generation.Amount);
+        }
+        else
+        {
+            generation.Resource.AddAmount(generation.Amount);
+        }
     }
 
     
@@ -50,6 +57,7 @@ public class ResourceGeneration
 {
     public Resource Resource;
     public int Amount;
+    public bool RemoveResource = false;
 
     public ResourceGeneration(Resource resource, int amount)
     {
