@@ -12,12 +12,11 @@ public class Resource : MonoBehaviour {
 
     public UnityEvent OnValueChanged = new UnityEvent();
 
-    public UnityEvent<int> OnValueChangedWithValue;
+    public ResourceWithValueEvent OnValueChangedWithValue = new ResourceWithValueEvent();
 
     void Awake()
     {
         Amount = StartingAmount;
-        OnValueChangedWithValue = new ResourceWithValueEvent();
     }
 
     public void AddAmount(int amount)
