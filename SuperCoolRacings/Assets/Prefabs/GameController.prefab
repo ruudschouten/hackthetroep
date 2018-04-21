@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 114786918778278960}
   - component: {fileID: 114520604558537054}
   - component: {fileID: 114787048196873170}
+  - component: {fileID: 114873635086734200}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -558,7 +559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4122532050173236
 Transform:
   m_ObjectHideFlags: 1
@@ -677,7 +678,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   OnValueChangedWithValue:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: ChangeWaterRate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 30
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: ResourceWithValueEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &114089335171726566
@@ -768,7 +780,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 114632197505534850}
   m_OnClick:
     m_PersistentCalls:
@@ -825,7 +837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Amount: 0
-  StartingAmount: 500
+  StartingAmount: 0
   OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -877,7 +889,7 @@ MonoBehaviour:
   gameController: {fileID: 114616700140476352}
   Costs:
   - Resource: {fileID: 114848785132163350}
-    Cost: 0
+    Cost: 10
   prototype: {fileID: 114655788255150484, guid: 11a84779864f0fb4ea25d0d469b53adb,
     type: 2}
   workers: {fileID: 114479976614100584}
@@ -895,25 +907,33 @@ MonoBehaviour:
   gameController: {fileID: 114616700140476352}
   Costs:
   - Resource: {fileID: 114848785132163350}
-    Cost: 0
+    Cost: 50
   prototype: {fileID: 114410357616558728, guid: 55251836d277ec84499c4e421c4c21b5,
     type: 2}
   pollutionPerTick:
     Resource: {fileID: 114088506486205140}
-    Amount: 0
+    Amount: 5
     RemoveResource: 0
   wastePerTick:
     Resource: {fileID: 114581120821908488}
-    Amount: 0
-    RemoveResource: 0
+    Amount: 5
+    RemoveResource: 1
   materialsPerTick:
     Resource: {fileID: 114148946806887008}
-    Amount: 0
+    Amount: 5
     RemoveResource: 0
-  moneyPerTick:
+  moneyPerTickIncinerate:
     Resource: {fileID: 114848785132163350}
-    Amount: 0
-    RemoveResource: 0
+    Amount: 5
+    RemoveResource: 1
+  moneyPerTickStore:
+    Resource: {fileID: 114848785132163350}
+    Amount: 10
+    RemoveResource: 1
+  moneyPerTickRecycle:
+    Resource: {fileID: 114848785132163350}
+    Amount: 15
+    RemoveResource: 1
 --- !u!114 &114307529901636042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -928,16 +948,16 @@ MonoBehaviour:
   gameController: {fileID: 114616700140476352}
   Costs:
   - Resource: {fileID: 114848785132163350}
-    Cost: 0
+    Cost: 15
   prototype: {fileID: 114602891078671994, guid: 6eb2f77d5ac402e4ebe5aa818bb33545,
     type: 2}
   materialsPerTick:
     Resource: {fileID: 114148946806887008}
-    Amount: 0
+    Amount: 5
     RemoveResource: 0
   moneyPerTick:
     Resource: {fileID: 114848785132163350}
-    Amount: 0
+    Amount: 5
     RemoveResource: 0
   materials: {fileID: 114148946806887008}
 --- !u!114 &114311013093434144
@@ -1222,7 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Amount: 0
-  StartingAmount: 500
+  StartingAmount: 0
   OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1267,7 +1287,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 114357311679326108}
   m_OnClick:
     m_PersistentCalls:
@@ -1460,6 +1480,39 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114930341828502152}
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 114610707077620234}
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 114108992913799838}
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114786412607846744
@@ -1526,16 +1579,16 @@ MonoBehaviour:
   gameController: {fileID: 114616700140476352}
   Costs:
   - Resource: {fileID: 114848785132163350}
-    Cost: 0
+    Cost: 15
   prototype: {fileID: 114369043625250570, guid: b17e7ec57d35d7b48879f306f170e838,
     type: 2}
   moneyPerTick:
     Resource: {fileID: 114848785132163350}
-    Amount: 0
+    Amount: 5
     RemoveResource: 0
   wastePerTick:
     Resource: {fileID: 114581120821908488}
-    Amount: 0
+    Amount: 5
     RemoveResource: 0
 --- !u!114 &114825724742582248
 MonoBehaviour:
@@ -1609,7 +1662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Amount: 0
-  StartingAmount: 500
+  StartingAmount: 50
   OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1674,6 +1727,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114873635086734200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212579343907172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f10e73c1811d5be4cb68790046b63e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShopBoostChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: BoostEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  MaxBoostLevel: 10
 --- !u!114 &114876064923217490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1768,7 +1837,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 114416981701956694}
   m_OnClick:
     m_PersistentCalls:
@@ -2242,7 +2311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -154, y: 4}
+  m_AnchoredPosition: {x: -149, y: 4}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224706274964214650
