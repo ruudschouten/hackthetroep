@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(RecycleCenter))]
-public class RecycleCenterFactory : UnitFactoryBase {
+public class HouseFactory : UnitFactoryBase
+{
+    [SerializeField]
+    private List<ResourceCost> Costs;
 
     [SerializeField]
-    private RecycleCenter prototype;
+    private WorkerGenerator prototype;
 
-    private RecycleCenter resourcePrototype;
-
-    void Awake()
-    {
-        resourcePrototype = GetComponent<RecycleCenter>();
-    }
-
-    public List<ResourceCost> Costs;
+    [SerializeField]
+    private Resource workers;
 
     public override void SpawnUnit(Cell cell)
     {
+
         bool canAfford = true;
 
         foreach (ResourceCost cost in Costs)
@@ -37,8 +34,8 @@ public class RecycleCenterFactory : UnitFactoryBase {
                 cost.Resource.ReduceAmount(cost.Cost);
             }
 
-            RecycleCenter newUnit = Instantiate(prototype);
-            newUnit.Initialize(resourcePrototype, gameController);
+            WorkerGenerator newUnit = Instantiate(prototype);
+            newUnit.Initialize(workers, gameController);
 
             newUnit.transform.SetParent(cell.transform, false);
         }
