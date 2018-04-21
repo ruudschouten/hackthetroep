@@ -5,19 +5,16 @@ using UnityEngine.Events;
 
 public class Resource : MonoBehaviour {
 
-    
-
     public int Amount;
     public int StartingAmount = 500;
 
     public UnityEvent OnValueChanged = new UnityEvent();
 
-    public UnityEvent<int> OnValueChangedWithValue;
+    public ResourceWithValueEvent OnValueChangedWithValue = new ResourceWithValueEvent();
 
     void Awake()
     {
         Amount = StartingAmount;
-        OnValueChangedWithValue = new ResourceWithValueEvent();
     }
 
     public void AddAmount(int amount)
