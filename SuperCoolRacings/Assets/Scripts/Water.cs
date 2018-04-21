@@ -44,6 +44,7 @@ public class Water : MonoBehaviour {
 
     public void ChangeWaterRate(int co2)
     {
+        Debug.Log(co2);
         if(co2 < 21)
         {
             currentRisingRate = 0;
@@ -59,7 +60,7 @@ public class Water : MonoBehaviour {
 
             //Klopt dit?????
             currentRisingRate = MinRateMultiplier + ( difference / 100 * co2);
-            Debug.Log(currentRisingRate);
+            //Debug.Log(currentRisingRate);
         }
     }
 

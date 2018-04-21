@@ -10,7 +10,7 @@ public class Resource : MonoBehaviour {
 
     public UnityEvent OnValueChanged = new UnityEvent();
 
-    public ResourceWithValueEvent OnValueChangedWithValue = new ResourceWithValueEvent();
+    public ResourceWithValueEvent OnValueChangedWithValue;
 
     void Awake()
     {
@@ -20,7 +20,7 @@ public class Resource : MonoBehaviour {
     public void AddAmount(int amount)
     {
         Amount += amount;
-        UpdateUI(amount);
+        UpdateUI(Amount);
     }
 
     public void ReduceAmount(int amount)
