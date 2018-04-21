@@ -33,6 +33,7 @@ public class MoneyUser : MonoBehaviour {
     {
         if (money != null)
         {
+
             if (money.RemoveResource)
             {
                 money.Resource.ReduceAmount(money.Amount);

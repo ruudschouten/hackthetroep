@@ -28,6 +28,7 @@ public class SpawningMode : MonoBehaviour {
     {
         if (factory != null && !cell.IsOccupied())
         {
+            Debug.Log(cell.name);
             factory.SpawnUnit(cell);
         }
 

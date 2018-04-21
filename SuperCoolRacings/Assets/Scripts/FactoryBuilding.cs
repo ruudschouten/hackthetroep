@@ -23,6 +23,12 @@ public class FactoryBuilding : MonoBehaviour {
     private int maxMaterials;
     private int maxMoney;
 
+    private bool useMaterials = false;
+
+    private float effectiveness = 1;
+
+    private ShopBooster shopBooster;
+
     void Awake()
     {
         materialUser = GetComponent<MaterialUser>();
@@ -35,11 +41,14 @@ public class FactoryBuilding : MonoBehaviour {
 
     void Start()
     {
-        
+
+        shopBooster = unit.GameController.ShopBooster;
+
     }
 
     public void Initialize(Resource materials, GameController gameController, ResourceGeneration materialsPerTick, ResourceGeneration moneyPerTick)
     {
+        this.materials = materials;
         this.materialsPerTick = materialsPerTick;
         this.moneyPerTick = moneyPerTick;
         materialUser.Initialize(gameController, moneyPerTick, materialsPerTick);
@@ -48,8 +57,39 @@ public class FactoryBuilding : MonoBehaviour {
         maxMoney = moneyPerTick.Amount;
     }
 
+    [ContextMenu("UseMaterials")]
+    public void SetModeToMaterials()
+    {
+        useMaterials = true;
+
+        shopBooster.AddBoost();
+
+        RecalculateEffectiveness(effectiveness);
+    }
+
+    [ContextMenu("BuyMaterials")]
+    public void SetModeToBuy()
+    {
+        useMaterials = false;
+
+        shopBooster.RemoveBoost();
+
+        RecalculateEffectiveness(effectiveness);
+    }
+
     private void RecalculateEffectiveness(float effectiveness)
     {
+        this.effectiveness = effectiveness;
+
+        if (useMaterials)
+        {
+
+        }
+        else
+        {
+
+        }
+
         materialsPerTick.Amount = (int)(maxMaterials / effectiveness);
         moneyPerTick.Amount = (int)(maxMoney / effectiveness);
     }

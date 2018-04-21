@@ -21,11 +21,13 @@ public class WorkersController : MonoBehaviour {
     public void RegisterWorkerSpender(WorkerSpender spender)
     {
         workerSpenders.Add(spender);
+        Distributeworkers();
     }
 
     public void RemoveWorkerSpender(WorkerSpender spender)
     {
         workerSpenders.Remove(spender);
+        Distributeworkers();
     }
 
     private void Distributeworkers()

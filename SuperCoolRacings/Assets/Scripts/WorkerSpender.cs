@@ -21,6 +21,7 @@ public class WorkerSpender : MonoBehaviour {
     { set
         {
             int workers = value;
+            
             if (workers < 0)
             {
                 workers = 0;
@@ -44,7 +45,7 @@ public class WorkerSpender : MonoBehaviour {
     {
         if (RequiredWorkers != 0)
         {
-            return assignedWorkers / RequiredWorkers;
+            return 0.3f;// ((float)assignedWorkers / (float)RequiredWorkers);
         }
         else
         {

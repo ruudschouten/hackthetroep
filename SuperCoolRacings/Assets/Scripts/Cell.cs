@@ -22,22 +22,34 @@ public class Cell : MonoBehaviour {
     public void MarkCell()
     {
         Marked = true;
-        MarkQuad.SetActive(true);
+        if (MarkQuad != null)
+        {
+            MarkQuad.SetActive(true);
+        }
     }
 
     public void UnmarkCell()
     {
         Marked = false;
-        MarkQuad.SetActive(false);
+        if (MarkQuad != null)
+        {
+            MarkQuad.SetActive(false);
+        }
     }
 
     private void OnMouseOver()
     {
-        HoverQuad.SetActive(true);
+        if (HoverQuad != null)
+        {
+            HoverQuad.SetActive(true);
+        }
     }
 
     private void OnMouseExit()
     {
-        HoverQuad.SetActive(false);
+        if (HoverQuad != null)
+        {
+            HoverQuad.SetActive(false);
+        }
     }
 }

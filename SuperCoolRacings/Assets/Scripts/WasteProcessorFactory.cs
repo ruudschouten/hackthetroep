@@ -17,7 +17,11 @@ public class WasteProcessorFactory : UnitFactoryBase
     [SerializeField]
     private ResourceGeneration materialsPerTick;
     [SerializeField]
-    private ResourceGeneration moneyPerTick;
+    private ResourceGeneration moneyPerTickIncinerate;
+    [SerializeField]
+    private ResourceGeneration moneyPerTickStore;
+    [SerializeField]
+    private ResourceGeneration moneyPerTickRecycle;
 
     public override void SpawnUnit(Cell cell)
     {
@@ -41,7 +45,7 @@ public class WasteProcessorFactory : UnitFactoryBase
             }
 
             WasteProcessor newUnit = Instantiate(prototype);
-            newUnit.Initialize(gameController, pollutionPerTick, wastePerTick, materialsPerTick, moneyPerTick);
+            newUnit.Initialize(gameController, pollutionPerTick, wastePerTick, materialsPerTick, moneyPerTickIncinerate, moneyPerTickStore, moneyPerTickRecycle);
 
             newUnit.transform.SetParent(cell.transform, false);
         }

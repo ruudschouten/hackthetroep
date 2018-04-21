@@ -30,6 +30,6 @@ public class Unit : MonoBehaviour {
 
     private void OnTick()
     {
-
+        OnTickEvent.Invoke();
     }
 }

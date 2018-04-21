@@ -17,6 +17,18 @@ public class WasteGenerator : MonoBehaviour {
         moneyUser = GetComponent<MoneyUser>();
         unit = GetComponent<Unit>();
         unit.OnTickEvent.AddListener(OnTick);
+
+
+    }
+
+    void Start()
+    {
+        unit.GameController.ShopBooster.ShopBoostChanged.AddListener(ShopBoostChanged);
+    }
+
+    private void ShopBoostChanged(int level)
+    {
+
     }
 
     public void Initialize(GameController gameController, ResourceGeneration money, ResourceGeneration waste)
@@ -45,5 +57,7 @@ public class WasteGenerator : MonoBehaviour {
             }
         }
     }
+
+
 
 }
