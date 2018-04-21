@@ -15,11 +15,18 @@ public class WasteProcessor : MonoBehaviour {
     private ResourceGeneration materialsPerTick;
     private ResourceGeneration moneyPerTick;
 
+    private GameController gameController;
+
     private PollutionGenerator pollutionGenerator;
     private WasteUser wasteUser;
     private MaterialUser materialUser;
     private MoneyUser moneyUser;
     private Unit unit;
+
+    private int maxPollution;
+    private int maxWaste;
+    private int maxMaterials;
+    private int maxMoney;
 
     void Awake()
     {
@@ -32,6 +39,21 @@ public class WasteProcessor : MonoBehaviour {
 
     public void Initialize(GameController gameController,ResourceGeneration polluionPerTick, ResourceGeneration wastePerTick, ResourceGeneration materialsPerTick, ResourceGeneration moneyPerTick)
     {
+        this.gameController = gameController;
         pollutionGenerator.Initialize(gameController, moneyPerTick, materialsPerTick, wastePerTick, pollutionPerTick);
+        maxPollution = polluionPerTick.Amount;
+        maxWaste = wastePerTick.Amount;
+        maxMaterials = materialsPerTick.Amount;
+        maxMoney = moneyPerTick.Amount;
+    }
+
+    public void SetModeToIncinerate()
+    {
+
+    }
+
+    public void SetModeToRecycle()
+    {
+
     }
 }
