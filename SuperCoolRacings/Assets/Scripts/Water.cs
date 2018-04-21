@@ -20,6 +20,8 @@ public class Water : MonoBehaviour {
 
     public UnityEvent evt_OnGameOver;
 
+    public float WaitAfterDeath;
+
     void Awake()
     {
 
@@ -71,10 +73,17 @@ public class Water : MonoBehaviour {
 
         if (currentHeight >= Maxheight)
         {
-            evt_OnGameOver.Invoke();
+            StartCoroutine(waitFor());
+
         }
     }
 
+
+    public IEnumerator waitFor()
+    {
+        yield return new WaitForSeconds(WaitAfterDeath);
+        evt_OnGameOver.Invoke();
+    }
 
     void UpdateWaterLevelVisual()
     {

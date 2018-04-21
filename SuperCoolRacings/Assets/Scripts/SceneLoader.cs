@@ -8,6 +8,11 @@ public class SceneLoader : MonoBehaviour {
         SceneManager.LoadScene("GameScene_Island");
     }
 
+    public void ToMain()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void Exit() {
     #if UNITY_EDITOR
             // Application.Quit() does not work in the editor so
