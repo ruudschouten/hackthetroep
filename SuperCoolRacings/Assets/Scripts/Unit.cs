@@ -16,6 +16,8 @@ public class Unit : MonoBehaviour {
         this.gameController.TickController.OnTickEvent.AddListener(OnTick);
     }
 
+    public GameController GameController { get {return gameController; }  }
+
     void Awake()
     {
 

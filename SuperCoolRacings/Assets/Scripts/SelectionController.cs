@@ -85,18 +85,22 @@ public class SelectionController : MonoBehaviour {
 
     private void MoveSelector()
     {
-        if (currentSelected != null)
+        if (Selector != null)
         {
-            Selector.gameObject.SetActive(true);
-            Vector3 newPos = currentSelected.transform.position;
-            newPos.y += currentSelected.SelectorHeight;
-            Selector.transform.position = newPos;
+            if (currentSelected != null)
+            {
+                Selector.gameObject.SetActive(true);
+                Vector3 newPos = currentSelected.transform.position;
+                newPos.y += currentSelected.SelectorHeight;
+                Selector.transform.position = newPos;
+            }
+            else
+            {
+                Selector.gameObject.SetActive(false);
+                Selector.transform.position = new Vector3(0, -10, 0);
+            }
         }
-        else
-        {
-            Selector.gameObject.SetActive(false);
-            Selector.transform.position = new Vector3(0, -10, 0);
-        }
+        
     }
 
     private void SelectNewObject(Selectable selectable)

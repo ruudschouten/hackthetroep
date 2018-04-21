@@ -15,11 +15,32 @@ public class Map : MonoBehaviour {
     [SerializeField]
     private float tileOffset = 0;
 
+    [SerializeField]
+    private bool generateCells = false;
+
     private List<Cell> cells = new List<Cell>();
 
     public void Start()
     {
-        SpawnGrid();
+        if (generateCells)
+        {
+            SpawnGrid();
+        }
+        else
+        {
+            SearchForCells();
+        }
+    }
+
+    private void SearchForCells()
+    {
+        GameObject[] cellObjects = GameObject.FindGameObjectsWithTag("Cell");
+
+        foreach (GameObject cellObject in cellObjects)
+        {
+            cells.Add(cellObject.GetComponent<Cell>());
+            cellObject.transform.SetParent(this.transform, true);
+        }
     }
 
     public void SpawnGrid()
