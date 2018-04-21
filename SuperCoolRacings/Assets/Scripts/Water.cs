@@ -59,7 +59,7 @@ public class Water : MonoBehaviour {
 
             //Klopt dit?????
             currentRisingRate = MinRateMultiplier + ( difference / 100 * co2);
-
+            Debug.Log(currentRisingRate);
         }
     }
 
